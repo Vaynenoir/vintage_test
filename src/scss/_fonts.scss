@@ -1,0 +1,19 @@
+@mixin fontFace($FontName, $FontPathName ) {
+
+	@font-face {
+		font-family: '#{$FontName}';
+		src: url('/assets/fonts/#{$FontPathName}.woff2') format('woff2') format('embedded-opentype'),
+			 url('/assets/fonts/#{$FontPathName}.woff') format('woff') format('embedded-opentype'),
+			 url('/assets/fonts/#{$FontPathName}.ttf') format('truetype') format('embedded-opentype');
+		font-style: normal;
+		font-weight: normal;
+	}
+
+}
+
+ @include fontFace('SuisseIntl', 'SuisseIntl');
+ @include fontFace('SuisseIntl-Light', 'SuisseIntl-Light');
+ @include fontFace('SuisseIntl-SemiBold', 'SuisseIntl-SemiBold');
+ $font-main: 'SuisseIntl', Arial, Helvetica, sans-serif;
+ $font-light: 'SuisseIntl-Light', Arial, Helvetica, sans-serif;
+ $font-semibold: 'SuisseIntl-SemiBold', Arial, Helvetica, sans-serif;

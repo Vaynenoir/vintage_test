@@ -136,7 +136,6 @@
                 currentTab: 0,
                 offices: offices,
                 officesData: officesData,
-                currentPlace: null,
                 mapStyles: {
                     styles: mapStyles,
                 }
@@ -152,12 +151,7 @@
             }
         },
         methods: {
-            setPlace(place) {
-                this.currentPlace = place;
-            },
-            selectTab (tab, index) {
-
-            }
+            
         }
     }
 </script>

@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import MapSection from "./components/mapSection.vue";
 import Form from "./components/Form.vue";
 

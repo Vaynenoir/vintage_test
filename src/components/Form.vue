@@ -11,7 +11,7 @@
             </div>
             <div class="input-wr" :class="[{active: phone.length > 0, error_field:  validPhone !== null && !validPhone}]">
                 <label for="Phone">Phone</label>
-                <input type="text" name="Phone"  v-model="phone">
+                <input type="number" name="Phone"  v-model="phone">
                 <div class="error" v-if="validPhone !== null && !validPhone">
                     {{validationErrors.phone}}
                 </div>
@@ -27,7 +27,7 @@
                 <input type="checkbox" name="checkbox" v-model="userAgree">
                 <label class="checkbox-label" for="checkbox">I agree the processing of personal data</label>
             </div>
-            <button type="submit" @click.stop.prevent="submit">Get in touch</button>
+            <button type="submit" @click.stop.prevent="submit" :disabled="!!submitted">Get in touch</button>
         </form>
     </div>
 </template>
@@ -61,10 +61,11 @@
                     this.valid = true;
                 }
             },
+
             validateFields () {
                 this.validEmail = !!this.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
                 this.validName = this.name.length > 0;
-                this.validPhone = !!this.phone.match(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/i);
+                this.validPhone = !!this.phone.match(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/);
                 return this.validEmail && this.validName && this.validPhone && this.userAgree;
             },
             submit : function(){
@@ -78,7 +79,7 @@
                         phone: self.phone,
                         isAgree: self.userAgree
                     }).then(function (response) {
-                        this.submitted = true;
+                        self.submitted = true;
                     }).catch(function (error) {
                         console.log(error);
                     })

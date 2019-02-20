@@ -137,6 +137,10 @@
     font-family: $font-semibold;
     color: #fff;
     width: 50%;
+    &:disabled {
+      background: #818286;
+      color: #000;
+    }
   }
 
   .form-wr {
